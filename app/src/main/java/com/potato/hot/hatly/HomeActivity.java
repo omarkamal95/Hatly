@@ -9,10 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
+import com.facebook.login.widget.ProfilePictureView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -21,6 +24,8 @@ import android.widget.TextView;
 public class HomeActivity extends AppCompatActivity {
 
     public static final String uInfo = "UserInfo";
+    ProfilePictureView profilePictureView;
+
     SharedPreferences user;
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -107,15 +112,17 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
+//        mContentView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                toggle();
+//            }
+//        });
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.listmenu);
+        getSupportActionBar().setTitle("Hatly");
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
@@ -124,6 +131,10 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView dummyText = (TextView) findViewById(R.id.fullscreen_content);
         dummyText.setText(user.getString("Username", "").toString() + user.getString("Id", "").toString());
+
+        profilePictureView = (ProfilePictureView) findViewById(R.id.imageMain);
+
+        profilePictureView.setProfileId(user.getString("Id", "").toString());
     }
 
 
@@ -149,23 +160,29 @@ public class HomeActivity extends AppCompatActivity {
 
         }
     }
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
 
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
-        delayedHide(100);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.actionbar_home, menu);
+        return true;
     }
 
-    private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
-        }
-    }
+//    protected void onPostCreate(Bundle savedInstanceState) {
+//        super.onPostCreate(savedInstanceState);
+//
+//        // Trigger the initial hide() shortly after the activity has been
+//        // created, to briefly hint to the user that UI controls
+//        // are available.
+//        delayedHide(100);
+//    }
+
+//    private void toggle() {
+//        if (mVisible) {
+//            hide();
+//        } else {
+//            show();
+//        }
+//    }
 
     private void hide() {
         // Hide UI first
