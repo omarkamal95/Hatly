@@ -99,4 +99,28 @@
         android:textAlignment="center"
         android:layout_toLeftOf="@+id/LoginButton" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:id="@+id/button"
+        android:layout_above="@+id/info"
+        android:layout_toLeftOf="@+id/login_button"
+        android:layout_toStartOf="@+id/login_button"
+        android:contextClickable="false"
+        android:elegantTextHeight="false"
+        android:onClick="goToProfile" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friend Profile"
+        android:id="@+id/button2"
+        android:onClick="goToFriendProfile"
+        android:layout_alignTop="@+id/button"
+        android:layout_toRightOf="@+id/LoginButton"
+        android:layout_toEndOf="@+id/LoginButton" />
+
 </RelativeLayout>
