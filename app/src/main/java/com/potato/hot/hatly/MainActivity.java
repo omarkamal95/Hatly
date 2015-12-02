@@ -1,6 +1,8 @@
 package com.potato.hot.hatly;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -45,11 +47,17 @@ public class MainActivity extends AppCompatActivity {
     ProfilePictureView profilePictureView;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    public static final String uInfo = "UserInfo";
+    SharedPreferences user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        user = getSharedPreferences(uInfo, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = user.edit();
+
         FacebookSdk.sdkInitialize(this.getApplicationContext());
 
         callbackManager = CallbackManager.Factory.create();
@@ -79,6 +87,15 @@ public class MainActivity extends AppCompatActivity {
                                         Log.v("LoginActivity", response.toString());
                                         //  info.setText(response.toString());
                                         try {
+
+                                            editor.putString("Name", response.getJSONObject().getString("name"));
+                                            editor.putString("Id", response.getJSONObject().getString("id"));
+                                            editor.putString("Email", response.getJSONObject().getString("email"));
+                                            editor.putString("Birthday", response.getJSONObject().getString("birthday"));
+                                            editor.putString("Gender", response.getJSONObject().getString("gender"));
+
+                                            editor.apply();
+
                                             userid[0] = response.getJSONObject().getString("id");
 
                                             profilePictureView = (ProfilePictureView) findViewById(R.id.imageMain);
@@ -130,6 +147,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
