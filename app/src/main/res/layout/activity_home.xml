@@ -37,14 +37,24 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:layout_gravity="center_horizontal|bottom">
+
+        <com.facebook.login.widget.ProfilePictureView
+        android:id="@+id/imageMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+            android:layout_gravity="center_horizontal|top" />
 
         <LinearLayout
             android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_gravity="center"
             android:background="@color/black_overlay"
             android:orientation="horizontal"
             tools:ignore="UselessParent">
@@ -59,14 +69,34 @@
 
         </LinearLayout>
 
-        <com.facebook.login.widget.ProfilePictureView
-        android:id="@+id/imageMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
-            android:layout_gravity="center_horizontal|top" />
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="294dp"
+            android:layout_below="@+id/edit_button"
+            android:weightSum="1"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal|bottom">
+            <fragment
+                android:name="com.potato.hot.hatly.PostFragment"
+                android:id="@+id/createPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_post" />
+            <fragment
+                android:name="com.potato.hot.hatly.ViewPostFragment"
+                android:id="@+id/viewPost"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                tools:layout="@layout/fragment_view_post" />
+            <fragment
+                android:name="com.potato.hot.hatly.ListCommentFragment"
+                android:id="@+id/viewComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_comment" />
+        </LinearLayout>
+
     </FrameLayout>
 
 </FrameLayout>

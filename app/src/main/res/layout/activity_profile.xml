@@ -86,6 +86,33 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:id="@+id/relativeLayout2">
-
     </RelativeLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_button"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true">
+        <fragment
+            android:name="com.potato.hot.hatly.PostFragment"
+            android:id="@+id/createPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_post" />
+        <fragment
+            android:name="com.potato.hot.hatly.ViewPostFragment"
+            android:id="@+id/viewPost"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            tools:layout="@layout/fragment_view_post" />
+        <fragment
+            android:name="com.potato.hot.hatly.ListCommentFragment"
+            android:id="@+id/viewComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_comment" />
+    </LinearLayout>
+
 </RelativeLayout>
