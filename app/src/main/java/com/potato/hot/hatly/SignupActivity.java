@@ -200,6 +200,8 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
+
         }
     }
 
