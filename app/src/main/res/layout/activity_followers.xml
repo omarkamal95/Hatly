@@ -16,5 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:background="#666363"
+        android:clickable="false" />
 </RelativeLayout>

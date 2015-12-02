@@ -1,14 +1,18 @@
 package com.potato.hot.hatly;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class followersActivity extends AppCompatActivity {
     //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
@@ -21,12 +25,24 @@ public class followersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_followers);;
-        for(int i  =0 ; i< 10; i++){
+        for(int i  =0 ; i< 20; i++){
             listItems.add("JonDoe"+i);
         }
 
-        adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
-       // findViewById(R.id.listView).setListAdapter(adapter);
+        adapter=new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, listItems);
+        ListView list = (ListView) findViewById(R.id.listView);
+        list.setAdapter(adapter);
+
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
+                Intent appInfo = new Intent(followersActivity.this, FriendProfileActivity.class);
+                startActivity(appInfo);
+            }
+
+        });
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -36,5 +52,6 @@ public class followersActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
 
 }

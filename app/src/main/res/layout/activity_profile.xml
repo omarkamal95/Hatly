@@ -66,19 +66,21 @@
             android:layout_below="@+id/imageMain"
             android:layout_toStartOf="@+id/imageMain"
             android:layout_toLeftOf="@+id/imageMain"
-            android:contextClickable="false" />
+            android:contextClickable="false"
+            android:gravity="fill_horizontal|center_vertical" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="50 followings"
+            android:text="50 following"
             android:id="@+id/followings_count"
             android:clickable="true"
             android:onClick="goToFollowing"
             android:layout_alignTop="@+id/followers_count"
             android:layout_toEndOf="@+id/imageMain"
-            android:layout_toRightOf="@+id/imageMain" />
+            android:layout_toRightOf="@+id/imageMain"
+            android:gravity="center_vertical|center_horizontal" />
 
     </RelativeLayout>
 
