@@ -26,6 +26,15 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="posttext">Hello blank fragment</string>
+    <string name="button">Post</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="view_post_fragment">Post Appears Here</string>
+    <string name="cmbutton">Submit</string>
+    <string name="commenttext">comment text here</string>
     <string name="title_activity_timeline">Timeline</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
