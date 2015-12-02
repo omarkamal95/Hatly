@@ -62,13 +62,34 @@
             android:name=".HomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-            android:theme="@style/FullscreenTheme" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".EditProfileActivity"></activity>
-
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.potato.hot.hatly.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:parentActivityName=".ProfileActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.potato.hot.hatly.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.potato.hot.hatly.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".followersActivity"
+            android:label="@string/title_activity_followers"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

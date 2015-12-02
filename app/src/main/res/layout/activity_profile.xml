@@ -17,14 +17,18 @@
         android:nestedScrollingEnabled="false"
         android:background="#e0e0e0"
         android:id="@+id/relativeLayout"
-        android:touchscreenBlocksFocus="false">
+        android:touchscreenBlocksFocus="false"
+        android:paddingBottom="5dp"
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="John Doe"
-            android:id="@+id/profile_name"
+            android:id="@+id/profilename"
             android:textStyle="bold"
             android:textSize="13pt"
             android:layout_alignParentTop="true"
@@ -32,14 +36,24 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/view"-->
+            <!--android:src="@drawable/backf"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true" />-->
+        <com.facebook.login.widget.ProfilePictureView
+            android:id="@+id/imageMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/view"
-            android:src="@drawable/backf"
-            android:layout_below="@+id/profile_name"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_gravity="center_horizontal|top"
+            android:layout_below="@+id/profilename"
+            android:layout_alignRight="@+id/profilename"
+            android:layout_alignEnd="@+id/profilename"
+            android:layout_alignLeft="@+id/profilename"
+            android:layout_alignStart="@+id/profilename" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,36 +61,41 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="20 followers"
             android:id="@+id/followers_count"
-            android:layout_alignTop="@+id/followings_count"
-            android:layout_toLeftOf="@+id/profile_name"
-            android:layout_toStartOf="@+id/profile_name"
-            android:layout_marginBottom="10dp" />
+            android:clickable="true"
+            android:onClick="goToFollowers"
+            android:layout_below="@+id/imageMain"
+            android:layout_toStartOf="@+id/imageMain"
+            android:layout_toLeftOf="@+id/imageMain"
+            android:contextClickable="false"
+            android:gravity="fill_horizontal|center_vertical" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="50 followings"
+            android:text="50 following"
             android:id="@+id/followings_count"
-            android:layout_below="@+id/view"
-            android:layout_toRightOf="@+id/profile_name"
-            android:layout_toEndOf="@+id/profile_name"
-            android:layout_marginBottom="10dp" />
+            android:clickable="true"
+            android:onClick="goToFollowing"
+            android:layout_alignTop="@+id/followers_count"
+            android:layout_toEndOf="@+id/imageMain"
+            android:layout_toRightOf="@+id/imageMain"
+            android:gravity="center_vertical|center_horizontal" />
 
     </RelativeLayout>
 
     <Button
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="edit info"
         android:id="@+id/edit_button"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#e0e0e0"
-        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_blue_dark"
         android:clickable="true"
-        android:onClick="editClick" />
+        android:onClick="editClick"
+        android:layout_alignBaseline="@+id/profile_gender"
+        android:layout_alignBottom="@+id/profile_gender"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -105,14 +124,103 @@
             android:name="com.potato.hot.hatly.ViewPostFragment"
             android:id="@+id/viewPost"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="54dp"
             tools:layout="@layout/fragment_view_post" />
         <fragment
             android:name="com.potato.hot.hatly.ListCommentFragment"
             android:id="@+id/viewComments"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="140dp"
             tools:layout="@layout/fragment_comment" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Name:"
+        android:id="@+id/textView"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="27dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email: "
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginTop="26dp"
+        android:textColor="#030202" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Birthday:"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginTop="28dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Gender:"
+        android:id="@+id/textView4"
+        android:textColor="#000000"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_marginTop="27dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="JonDoe"
+        android:id="@+id/profile_name"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email"
+        android:id="@+id/profile_email"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="bd"
+        android:id="@+id/profile_bd"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignRight="@+id/profile_email"
+        android:layout_alignEnd="@+id/profile_email" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Male"
+        android:id="@+id/profile_gender"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignLeft="@+id/profile_bd"
+        android:layout_alignStart="@+id/profile_bd" />
 </RelativeLayout>

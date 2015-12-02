@@ -21,4 +21,5 @@
         android:layout_height="140dp"
         android:text="@string/view_post_fragment" />
 
+
 </LinearLayout>

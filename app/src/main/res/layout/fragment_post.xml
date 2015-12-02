@@ -8,7 +8,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="113dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|top"
         android:visibility="visible"
         android:focusableInTouchMode="false"
@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/post_text"
             android:layout_width="match_parent"
-            android:layout_height="77dp"
+            android:layout_height="37dp"
             android:text="@string/posttext"
             android:layout_gravity="center"
             android:visibility="visible"
