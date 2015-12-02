@@ -129,9 +129,6 @@ public class HomeActivity extends AppCompatActivity {
         // while interacting with the UI.
        // findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-        TextView dummyText = (TextView) findViewById(R.id.fullscreen_content);
-        dummyText.setText(user.getString("Name", "").toString() + user.getString("Id", "").toString());
-
         profilePictureView = (ProfilePictureView) findViewById(R.id.imageMain);
 
         profilePictureView.setProfileId(user.getString("Id", "").toString());
@@ -141,7 +138,8 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.action_search:
@@ -149,8 +147,9 @@ public class HomeActivity extends AppCompatActivity {
                 // as a favorite...
                 return true;
 
-            case R.id.action_share:
-
+            case R.id.action_profile:
+                Intent intent2 = new Intent(this, ProfileActivity.class);
+                startActivity(intent2);
                 return true;
 
             default:

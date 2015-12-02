@@ -1,6 +1,8 @@
 package com.potato.hot.hatly;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,9 @@ public class EditProfileActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mFirstNameView, mLastNameView, mDateOfBirthView, mCityView, mCountryView;
+    public static final String uInfo = "UserInfo";
+    SharedPreferences user;
+
 
 
 
@@ -33,7 +38,12 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void submitEdit(View view) {
-
+        user = getSharedPreferences(uInfo, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = user.edit();
+        editor.putString("Name", String.valueOf(mFirstNameView.getText())+ String.valueOf(mLastNameView.getText()));
+        editor.putString("Email", String.valueOf(mEmailView.getText()));
+        editor.putString("Birthday", String.valueOf(mDateOfBirthView.getText()));
+        editor.apply();
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
