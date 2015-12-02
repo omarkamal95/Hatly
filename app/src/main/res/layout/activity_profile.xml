@@ -64,8 +64,9 @@
             android:clickable="true"
             android:onClick="goToFollowers"
             android:layout_below="@+id/imageMain"
+            android:layout_toStartOf="@+id/imageMain"
             android:layout_toLeftOf="@+id/imageMain"
-            android:layout_toStartOf="@+id/imageMain" />
+            android:contextClickable="false" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,8 +77,8 @@
             android:clickable="true"
             android:onClick="goToFollowing"
             android:layout_alignTop="@+id/followers_count"
-            android:layout_toRightOf="@+id/imageMain"
-            android:layout_toEndOf="@+id/imageMain" />
+            android:layout_toEndOf="@+id/imageMain"
+            android:layout_toRightOf="@+id/imageMain" />
 
     </RelativeLayout>
 

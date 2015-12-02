@@ -42,4 +42,14 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EditProfileActivity.class);
         startActivity(intent);
     }
+
+    public void goToFollowers(View view) {
+        Intent intent = new Intent(this, followersActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToFollowing(View view) {
+        Intent intent = new Intent(this, followersActivity.class);
+        startActivity(intent);
+    }
 }

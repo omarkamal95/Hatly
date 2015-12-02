@@ -46,6 +46,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="51dp"
             android:layout_gravity="center_horizontal|top" />
+
     </FrameLayout>
 
 </FrameLayout>
