@@ -31,7 +31,7 @@
     <string name="posttext">Hello blank fragment</string>
     <string name="button">Post</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="view_post_fragment">Post Appears Here</string>
     <string name="cmbutton">Submit</string>
     <string name="commenttext">comment text here</string>
@@ -196,4 +196,5 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_followers">followersActivity</string>
 </resources>
