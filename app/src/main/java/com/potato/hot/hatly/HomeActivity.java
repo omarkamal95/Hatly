@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
-    private static final boolean AUTO_HIDE = true;
+    private static final boolean AUTO_HIDE = false;
 
     /**
      * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
@@ -87,15 +87,15 @@ public class HomeActivity extends AppCompatActivity {
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (AUTO_HIDE) {
-                delayedHide(AUTO_HIDE_DELAY_MILLIS);
-            }
-            return false;
-        }
-    };
+//    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+//        @Override
+//        public boolean onTouch(View view, MotionEvent motionEvent) {
+//            if (AUTO_HIDE) {
+//                delayedHide(AUTO_HIDE_DELAY_MILLIS);
+//            }
+//            return false;
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,10 +127,10 @@ public class HomeActivity extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+       // findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
         TextView dummyText = (TextView) findViewById(R.id.fullscreen_content);
-        dummyText.setText(user.getString("Username", "").toString() + user.getString("Id", "").toString());
+        dummyText.setText(user.getString("Name", "").toString() + user.getString("Id", "").toString());
 
         profilePictureView = (ProfilePictureView) findViewById(R.id.imageMain);
 

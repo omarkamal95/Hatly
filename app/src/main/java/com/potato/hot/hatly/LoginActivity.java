@@ -3,7 +3,9 @@ package com.potato.hot.hatly;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -40,6 +42,9 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    public static final String uInfo = "UserInfo";
+    SharedPreferences user;
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -68,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Intent intent = getIntent();
-        setupActionBar();
+//        setupActionBar();
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -143,13 +148,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void setupActionBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            // Show the Up button in the action bar.
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
+    //@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+//    private void setupActionBar() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//            // Show the Up button in the action bar.
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        }
+//    }
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -197,9 +202,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+        //    showProgress(true);
+//            mAuthTask = new UserLoginTask(email, password);
+//            mAuthTask.execute((Void) null);
+            user = getSharedPreferences(uInfo, Context.MODE_PRIVATE);
+            final SharedPreferences.Editor editor = user.edit();
+
+            editor.putString("Name", "testLogin");
+            editor.putString("Id", "8");
+            editor.putString("Email", email);
+            editor.putString("Birthday", "32");
+            editor.putString("Gender", "male");
+
+            editor.apply();
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
 
         }
     }
