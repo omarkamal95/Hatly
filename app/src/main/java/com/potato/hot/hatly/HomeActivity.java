@@ -24,7 +24,6 @@ import com.facebook.login.widget.ProfilePictureView;
 public class HomeActivity extends AppCompatActivity {
 
     public static final String uInfo = "UserInfo";
-    ProfilePictureView profilePictureView;
 
     SharedPreferences user;
     /**
@@ -107,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
         user = getSharedPreferences(uInfo, Context.MODE_PRIVATE);
 
         mVisible = true;
-        mControlsView = findViewById(R.id.fullscreen_content_controls);
+       // mControlsView = findViewById(R.id.fullscreen_content_controls);
 
 
         // Set up the user interaction to manually show or hide the system UI.
@@ -128,9 +127,7 @@ public class HomeActivity extends AppCompatActivity {
         // while interacting with the UI.
        // findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-        profilePictureView = (ProfilePictureView) findViewById(R.id.imageMain);
 
-        profilePictureView.setProfileId(user.getString("Id", "").toString());
     }
 
 

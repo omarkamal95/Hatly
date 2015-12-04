@@ -137,10 +137,8 @@
     <string name="prompt_city">City</string>
     <string name="prompt_country">Country</string>
     <string name="change_password_action">Change Password</string>
-<<<<<<< HEAD
     <string name="postcomment">Enter comment</string>
     <string name="post_author">Post Author</string>
-=======
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -201,5 +199,4 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_followers">followersActivity</string>
->>>>>>> 4339d4b5df699083d221935931a68071d62a37f0
 </resources>
